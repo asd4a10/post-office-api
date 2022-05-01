@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class DetailsModel {
+public class PostDetailsModel {
     private String postId;
     private ClientModel senderId;
     private ClientModel receiverId;

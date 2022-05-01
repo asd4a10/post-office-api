@@ -2,8 +2,8 @@ package com.example.postofficeapi.feign;
 
 import com.example.postofficeapi.model.ClientModel;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,6 +15,15 @@ public interface ClientFeign {
     @GetMapping("/client/all")
     List<ClientModel> getAllClients();
 
-    @GetMapping("/client/{clientId}")
-    ClientModel getClientById(@PathVariable String clientId);
+    @GetMapping("/client")
+    ClientModel getClientById(@RequestParam String clientId);
+
+    @PostMapping("/client")
+    ClientModel createClient(ClientModel clientModel);
+
+    @PutMapping("/client")
+    ClientModel updateClientById(@RequestParam String clientId, ClientModel clientModel);
+
+    @DeleteMapping("/client")
+    ClientModel deleteClientById(@RequestParam String clientId);
 }
