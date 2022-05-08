@@ -6,6 +6,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @FeignClient("client-payment")
 public interface PaymentFeign {
     @GetMapping("/payment/all")
@@ -34,7 +36,7 @@ public interface PaymentFeign {
     PaymentModel makePaymentByPaymentId(@RequestParam String paymentId);
 
     @PutMapping("/payment/pay/all")
-    Page<PaymentModel> makeAllPaymentsByClientId(@RequestParam String clientId, Pageable pageable);
+    List<PaymentModel> makeAllPaymentsByClientId(@RequestParam String clientId);
 
     @GetMapping("/payment/client/total")
     Integer getTotalByClientId(@RequestParam String clientId);

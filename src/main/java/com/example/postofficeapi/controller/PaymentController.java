@@ -10,6 +10,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/post-office/payment")
 public class PaymentController {
@@ -55,9 +57,8 @@ public class PaymentController {
     }
 
     @PutMapping("/pay/all")
-    public Page<PaymentModel> makeAllPaymentsByClientId(@RequestParam String clientId,
-                                                        Pageable pageable) {
-        return paymentFeign.makeAllPaymentsByClientId(clientId, pageable);
+    public List<PaymentModel> makeAllPaymentsByClientId(@RequestParam String clientId) {
+        return paymentFeign.makeAllPaymentsByClientId(clientId);
     }
 
     @DeleteMapping
